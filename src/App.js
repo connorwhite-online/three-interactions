@@ -6,7 +6,6 @@ import { Perf } from 'r3f-perf';
 
 // component imports
 import Sphere from './Sphere.js';
-// import Box from './Box.js';
 
 export default function App() { 
 
@@ -17,7 +16,6 @@ export default function App() {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Sphere />
-        {/* <Box /> */}
         < Sparkles 
           count={50}
           size={2}
