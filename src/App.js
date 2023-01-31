@@ -1,52 +1,27 @@
 import './App.css';
 import { Canvas } from '@react-three/fiber';
-import { useRef } from 'react';
+import { OrbitControls, Sparkles } from '@react-three/drei';
+// import { useControls } from 'leva';
 
-function App() {
+// component imports
+import Sphere from './Sphere';
 
-  const sphere = useRef();
-
-  const hover = () => {
-    // sphere.current.rotation += [30, 30, 30];
-    sphere.current.material.wireframe = !sphere.current.material.wireframe;
-    console.log('hover event');
-  }
-
-  const grow = () => {
-    sphere.current.scale.x += .1;
-    sphere.current.scale.y += .1;
-    sphere.current.scale.z += .1;
-    console.log('grow event');
-  }
-
-  const shrink = () => {
-    sphere.current.scale.x -= .1;
-    sphere.current.scale.y -= .1;
-    sphere.current.scale.z -= .1;
-    console.log('shrink event');
-  }
+export default function App() { 
 
   return (
     <div className="App">
       <Canvas>
+        <OrbitControls autoRotate autoRotateSpeed={.75}/>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <mesh 
-        ref={sphere}
-          scale={[1, 1, 1]}
-          rotation={[15, 15, 15]}
-          position={[0, 0, 0]}
-          onPointerEnter={hover}
-          onPointerLeave={hover}
-          onPointerDown={grow}
-          onPointerUp={shrink}
-        >
-          <sphereGeometry />
-          <meshStandardMaterial wireframe color="turquoise"/>
-        </mesh>
+        <Sphere />
+        < Sparkles 
+          count={50}
+          size={2}
+          scale={[10, 10, 10]}
+          speed={.25}
+        />
       </Canvas>
     </div>
   );
 }
-
-export default App;
