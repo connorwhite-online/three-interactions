@@ -1,43 +1,15 @@
-import React, {useRef} from "react";
+import React from "react";
 
-export default function Sphere() {
-
-// create a ref to the sphere
-  const sphere = useRef();
-
-  const hover = () => {
-    // sphere.current.rotation += [30, 30, 30];
-    sphere.current.material.wireframe = !sphere.current.material.wireframe;
-    console.log('hover event');
-  }
-
-  const grow = () => {
-    sphere.current.scale.x += .1;
-    sphere.current.scale.y += .1;
-    sphere.current.scale.z += .1;
-    console.log('grow event');
-  }
-
-  const shrink = () => {
-    sphere.current.scale.x -= .1;
-    sphere.current.scale.y -= .1;
-    sphere.current.scale.z -= .1;
-    console.log('shrink event');
-  }
+export default function Box() {
 
     return (
-        <mesh 
-            ref={sphere}
+        <mesh
             scale={[1, 1, 1]}
             rotation={[15, 15, 15]}
-            position={[0, 0, 0]}
-            onPointerEnter={hover}
-            onPointerLeave={hover}
-            onPointerDown={grow}
-            onPointerUp={shrink}
+            position={[5, 3, 1]}
         >
-            <sphereGeometry />
-            <meshStandardMaterial wireframe metalness={1} color="turquoise" emissive="turquoise" emissiveIntensity={5}/>
+            <boxGeometry />
+            <meshTransmissionMaterial/>
         </mesh>
     )
 

@@ -1,10 +1,12 @@
 import './App.css';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sparkles } from '@react-three/drei';
+import { Perf } from 'r3f-perf';
 // import { useControls } from 'leva';
 
 // component imports
-import Sphere from './Sphere';
+import Sphere from './Sphere.js';
+// import Box from './Box.js';
 
 export default function App() { 
 
@@ -15,12 +17,14 @@ export default function App() {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <Sphere />
+        {/* <Box /> */}
         < Sparkles 
           count={50}
           size={2}
           scale={[10, 10, 10]}
           speed={.25}
         />
+        <Perf position="top-left" />
       </Canvas>
     </div>
   );

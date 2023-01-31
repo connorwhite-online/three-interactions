@@ -1,8 +1,14 @@
 import React, {useRef} from "react";
 import {Bloom} from '@react-three/postprocessing';
-// import { useControls } from "leva";
+import { useControls } from "leva";
 
 export default function Sphere() {
+
+    const {color, emissive, emissiveIntensity} = useControls({
+        color: {value: 'orange', label: 'Color'},
+        emissive: {value: 'orange', label: 'Emissive'},
+        emissiveIntensity: {value: 20, min: 0, max: 100, label: 'Emissive Intensity'}
+    })
 
 // create a ref to the sphere
   const sphere = useRef();
@@ -39,7 +45,7 @@ export default function Sphere() {
             onPointerUp={shrink}
         >
             <sphereGeometry />
-            <meshStandardMaterial wireframe metalness={1} color="orange" emissive="orange" emissiveIntensity={20}/>
+            <meshStandardMaterial wireframe metalness={1} color={color} emissive={emissive} emissiveIntensity={emissiveIntensity}/>
             <Bloom miniMapBlur />
         </mesh>
     )
